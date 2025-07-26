@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Test Suite" parallel="tests" thread-count="2">
+    <test name="Chrome">
+        <parameter name="browser" value="headlessChrome"/>
+        <classes>
+            <class name="login.LoginTests"/>
+
+
+        </classes>
+    </test>
+    <test name="Firefox" parallel="classes" >
+        <parameter name="browser" value="headlessFirefox"/>
+
+        <classes>
+            <class name="login.LoginTests2">
+                <methods>
+                    <exclude name="testSuccessfulLogin3"/>
+                </methods>
+            </class>
+            <class name="login.LoginTests1"/>
+        </classes>
+    </test>
+</suite>
