@@ -9,12 +9,16 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.*;
 import pages.HomePage;
 import reader.ReadDataFromJson;
+import utils.ScreenRecorderUtil;
+import utils.UtilsTests;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Method;
 
 public class BaseTests {
 
     WebDriver driver;
+    UtilsTests utilsTests;
     protected HomePage homePage;
 
     ReadDataFromJson readDataFromJson;
@@ -48,9 +52,15 @@ public class BaseTests {
     }
 
     @BeforeMethod
-    public void goHome() throws FileNotFoundException {
-
+    public void goHome(Method method) throws Exception {
         driver.get(dataModel().URL);
+        ScreenRecorderUtil.startRecord(method.getName());
+    }
+    @AfterMethod
+    public void afterMethod(Method method) throws Exception {
+        utilsTests = new UtilsTests(driver);
+        utilsTests.takeScreenShot(method);
+        ScreenRecorderUtil.stopRecord();
     }
 
     @AfterClass
