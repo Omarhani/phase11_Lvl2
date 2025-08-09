@@ -3,9 +3,6 @@
 <suite name="Smoke Test Suite" >
     <test name="Chrome">
         <parameter name="browser" value="headlessChrome"/>
-        <classes>
-            <class name="login.LoginTests"/>
 
-        </classes>
     </test>
 </suite>

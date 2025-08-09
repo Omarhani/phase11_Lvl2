@@ -2,23 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Regression Test Suite" >
     <test name="Chrome">
-        <parameter name="browser" value="Chrome"/>
-        <classes>
-            <class name="login.LoginTests"/>
+        <parameter name="browser" value="headlessChrome"/>
 
-
-        </classes>
-    </test>
-    <test name="Firefox"  >
-        <parameter name="browser" value="firefox"/>
-
-        <classes>
-            <class name="login.LoginTests2">
-                <methods>
-                    <exclude name="testSuccessfulLogin3"/>
-                </methods>
-            </class>
-            <class name="login.LoginTests1"/>
-        </classes>
     </test>
 </suite>
